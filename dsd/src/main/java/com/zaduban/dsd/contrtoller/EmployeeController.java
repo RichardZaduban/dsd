@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1")
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -55,9 +55,6 @@ public class EmployeeController {
         employee.setEmailId(employeeDetails.getEmailId());
         employee.setLastName(employeeDetails.getLastName());
         employee.setFirstName(employeeDetails.getFirstName());
-        employee.setDepartment(employeeDetails.getDepartment());
-        employee.setPosition(employeeDetails.getPosition());
-        employee.setSalary(employeeDetails.getSalary());
         final Employee updatedEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok(updatedEmployee);
     }
@@ -73,5 +70,4 @@ public class EmployeeController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
-
 }
