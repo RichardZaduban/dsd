@@ -41,8 +41,9 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employee);
     }
 
-    @PostMapping("/employees")
+    @PostMapping(value = "/employees", consumes = "application/json")
     public Employee createEmployee(@Valid @RequestBody Employee employee) {
+        System.out.println(employee.getFirstName()+ employee.getLastName());
         return employeeRepository.save(employee);
     }
 
